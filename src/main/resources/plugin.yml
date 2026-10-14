@@ -1,0 +1,11 @@
+name: MineCommend
+version: 1.0
+main: com.kenta.minecommend.MineCommend
+api-version: '1.21'
+commands:
+  commend:
+    description: Commend another player
+    usage: /commend <player>
+  commendprofile:
+    description: View a player's commend counts
+    usage: /commendprofile <player>
