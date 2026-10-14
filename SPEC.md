@@ -1,35 +1,58 @@
-目標:
-完成一個可以讚揚其他玩家的minecraft plugin
+# MineCommend Specification
 
-核心流程:
-玩家輸入 /commend <user name>
-→ 驗證玩家
-→ 彈出commend GUI
-→ 選擇一種commend
-→ 處存結果
+## Goal
 
-Commend類型:
-1.Friendly
-2.Teamwork
-3.Helpful
+Create a Minecraft plugin that allows players to commend other players.
 
-Gui規格:
-27格的箱子
-11號位放Friendly
-13號位放Teamwork
-15號位放Helpful
-玩家不能移動或拿取GUI的item
+## Core Flow
 
-Profile：
-提供 /commendprofile <player>
+Player enters `/commend <player>`
+→ Validate the target player
+→ Open the Commend GUI
+→ Select a commend type
+→ Save the result
 
-顯示：
-- Friendly 數量
-- Teamwork 數量
-- Helpful 數量
-- Total Commend 數量
+## Commend Types
 
-限制:
-1.僅讚揚線上玩家
-2.不可以讚揚自己
-3.每 24 小時只能讚揚同一名玩家一次
+1. Friendly
+2. Teamwork
+3. Helpful
+
+## GUI Requirements
+
+- Use a 27-slot inventory.
+- Slot 11: Friendly
+- Slot 13: Teamwork
+- Slot 15: Helpful
+- Players cannot move or take items from the Commend GUI.
+
+## Commend Profile
+
+Provide the following command:
+
+`/commendprofile <player>`
+
+Display:
+
+- Friendly count
+- Teamwork count
+- Helpful count
+- Total Commend count
+
+Profile requirements:
+
+- Commend profiles can be viewed even when the target player is offline.
+- The command can be used by both players and the server console.
+- A count of `0` should still be displayed.
+
+## Restrictions
+
+1. Players can only commend players who are currently online.
+2. Players cannot commend themselves.
+3. A player can only commend the same player once every 24 hours.
+4. The 24-hour restriction applies regardless of commend type.
+
+## Data Persistence
+
+- Commend data must persist after a server restart.
+- Cooldown data must persist after a server restart.

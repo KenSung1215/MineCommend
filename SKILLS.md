@@ -1,21 +1,26 @@
-# 開始前
-- 讀spec
-- 讀know
-- 開始實作前，不要更改程式碼。
-- 不要更改與目前任務無關的程式碼。
+# Before Starting
 
-# 寫程式時
-- 盡量讓code簡單
-- 在做重要的 Architecture Decision 前先詢問我。
+- Read `SPEC.md`.
+- Read `KNOWLEDGE.md`.
+- Do not modify code before reviewing the project requirements and current implementation.
+- Do not modify code that is unrelated to the current task.
 
-# 寫完後
-- 跟我說哪邊更改了
-- 解釋你更改了什麼
+# While Coding
 
-# 遇到Bug時
-- 解釋碰到什麼bug
-- 如果 Bug 不需要改變 Spec 或 Architecture，可以自行修復
-- 如果需要改變 Spec 或 Architecture，先詢問我。
+- Keep the code as simple as possible.
+- Ask me before making important architecture decisions.
 
-# 測試
-- 給我測試的步驟
+# After Coding
+
+- Tell me which parts of the project were changed.
+- Explain what was changed and why.
+
+# Bug Handling
+
+- Explain the bug and what caused it.
+- If fixing the bug does not require changes to the Spec or Architecture, it can be fixed directly.
+- If fixing the bug requires changes to the Spec or Architecture, ask me before making the change.
+
+# Testing
+
+- Provide clear steps for testing the changes.
