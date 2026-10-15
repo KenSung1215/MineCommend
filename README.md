@@ -1,16 +1,26 @@
 # MineCommend
 
-MineCommend is a Minecraft plugin that lets players recognize other players for positive behavior.
+**A Minecraft plugin that lets players recognize and appreciate each other for positive behavior.**
 
-For example, after playing together, a player can commend a teammate for being **Friendly**, showing good **Teamwork**, or being **Helpful**.
+Have you ever played Minecraft with someone who was especially friendly, helpful, or a great teammate?
 
-It works like a simple player reputation system inside a Minecraft server.
+MineCommend gives players a simple way to show appreciation.
+
+Players can commend others in three categories:
+
+- ❤️ **Friendly** — For players who are kind and enjoyable to play with.
+- ⚔️ **Teamwork** — For players who cooperate and work well with others.
+- 🛏️ **Helpful** — For players who support and assist others.
+
+Each commendation contributes to the player's profile, allowing everyone to see the positive recognition they have received.
+
+---
 
 ## How to Use
 
 ### 1. Commend Another Player
 
-Enter:
+Type the following command in Minecraft chat:
 
 ```text
 /commend <player>
@@ -22,19 +32,22 @@ For example:
 /commend Steve
 ```
 
-A menu will open with three choices:
+A menu will appear with three options:
 
-- ❤️ **Friendly** — for players who are friendly and enjoyable to play with
-- ⚔️ **Teamwork** — for players who cooperate well with others
-- 🛏️ **Helpful** — for players who help other players
+**Friendly | Teamwork | Helpful**
 
-Select one of the three options to commend the player.
+Simply click one of the options to commend the player.
 
-A player cannot commend themselves and can only commend the same player once every 24 hours.
+**Important rules:**
+- The player you want to commend must be online.
+- You cannot commend yourself.
+- You can only commend the same player once every 24 hours, regardless of commendation type.
 
-## View a Player's Commendations
+### 2. View a Player's Commendations
 
-Enter:
+Want to see how many commendations someone has received?
+
+Type:
 
 ```text
 /commendprofile <player>
@@ -46,7 +59,7 @@ For example:
 /commendprofile Steve
 ```
 
-The plugin displays how many commendations the player has received:
+You will see something like this:
 
 ```text
 Friendly: 5
@@ -55,178 +68,225 @@ Helpful: 2
 Total Commend: 10
 ```
 
-Profiles can still be viewed when the player is offline.
+You can also view a player's profile when they are offline.
 
-## Example
+### Example: How a Commendation Works
 
 ```text
-Player A plays with Player B
-            ↓
-Player A enters /commend PlayerB
-            ↓
-      Commend Menu Opens
-            ↓
-   ┌─────────────────────┐
-   │ Friendly            │
-   │ Teamwork            │
-   │ Helpful             │
-   └─────────────────────┘
-            ↓
-    Player A selects
-        "Teamwork"
-            ↓
-Player B receives +1 Teamwork
-            ↓
-     Result is saved
+You play Minecraft with Steve
+              |
+              v
+     Type /commend Steve
+              |
+              v
+       Commend Menu Opens
+              |
+              v
+   Choose Friendly, Teamwork,
+          or Helpful
+              |
+              v
+    Steve receives +1 commend
+      in the selected category
+              |
+              v
+       The result is saved
+              |
+              v
+  View it with /commendprofile Steve
 ```
+
+---
 
 ## Screenshots
 
 ### Commend Menu
 
-> Screenshot coming soon.
+*Screenshot coming soon.*
 
-### Commend Profile
+### Player Commendation Profile
 
-> Screenshot coming soon.
+*Screenshot coming soon.*
+
+---
+
+## Getting Started
+
+MineCommend is designed for Minecraft Java Edition servers running **Paper 1.21.4**.
+
+### Installation
+
+You don't need to know Java or how to write code to use MineCommend.
+
+1. **Download** the plugin from the [latest MineCommend release](https://github.com/KenSung1215/MineCommend/releases/latest). Under **Assets**, select the `.jar` file.
+2. **Install** it by placing the downloaded `.jar` file into your Minecraft server's `plugins` folder.
+3. **Restart** your Minecraft server.
+
+That's it! MineCommend is ready to use.
+
+Join your server and type:
+
+```text
+/commend Steve
+```
+
+**Requirements:**
+- Minecraft Java Edition
+- Paper 1.21.4 server
+- Java 21
+
+---
 
 ## Features
 
-- Three commendation types: Friendly, Teamwork, and Helpful
-- Interactive Minecraft inventory GUI
-- 24-hour cooldown between the same two players
-- Self-commendation prevention
-- Persistent commendation data after server restarts
-- Persistent cooldown data after server restarts
-- Player commendation profiles
-- Offline player profile lookup
-- Server console support for profile lookup
+- **Player Recognition** — Commend other players for positive behavior.
+- **Three Categories** — Friendly, Teamwork, and Helpful.
+- **Interactive GUI** — Select commendations using a Minecraft inventory menu.
+- **Cooldown Protection** — Prevents repeated commendations to the same player within 24 hours.
+- **Self-Commendation Prevention** — Players cannot commend themselves.
+- **Persistent Data** — Commendations and cooldowns remain saved after server restarts.
+- **Player Profiles** — View individual and total commendation counts.
+- **Offline Profile Lookup** — View profiles even when players are offline.
+- **Console Support** — Server administrators can view profiles through the server console.
 
 ---
 
 # Technical Details
 
-MineCommend was built as a Java project using the Paper API.
+This section explains how MineCommend was built and is intended for developers or anyone interested in the implementation.
 
 ## Tech Stack
 
-- Java 21
-- Paper API 1.21.4
-- Maven
-- YAML
+| Technology | Purpose |
+|---|---|
+| Java 21 | Main programming language |
+| Paper API 1.21.4 | Minecraft server plugin development |
+| Maven | Project build and dependency management |
+| YAML | Persistent storage for commendations and cooldowns |
 
-## How It Works Internally
+## Architecture
 
-The project separates user commands, GUI events, game rules, and data storage into different components.
-
-```text
-Player
-  │
-  │ /commend <player>
-  ▼
-CommendCommand
-  │
-  │ Opens GUI
-  ▼
-CommendMenuListener
-  │
-  │ Player selects a commend type
-  ▼
-CommendManager
-  │
-  │ Validates rules and cooldown
-  ▼
-DataManager
-  │
-  │ Saves data
-  ▼
-data.yml
-```
-
-### Project Structure
+MineCommend separates command handling, GUI interactions, business rules, and data storage into different components.
 
 ```text
-src/main/java/com/kenta/minecommend/
-├── MineCommend.java
-├── CommendCommand.java
-├── CommendProfileCommand.java
-├── CommendMenuListener.java
-├── CommendManager.java
-└── DataManager.java
+           Minecraft Player
+                  |
+                  | /commend <player>
+                  v
+           CommendCommand
+                  |
+                  | Opens the GUI
+                  v
+          Commend Menu
+                  |
+                  | Player selects a category
+                  v
+        CommendMenuListener
+                  |
+                  | Sends commend request
+                  v
+           CommendManager
+                  |
+                  | Checks commendation rules
+                  | and 24-hour cooldown
+                  v
+             DataManager
+                  |
+                  | Saves commendation counts
+                  | and cooldown timestamps
+                  v
+               data.yml
 ```
 
-**MineCommend.java**  
-Starts the plugin and connects the commands, managers, and event listeners.
+### Component Responsibilities
 
-**CommendCommand.java**  
-Handles `/commend <player>` and opens the commend menu.
+| Component | Responsibility |
+|---|---|
+| `MineCommend.java` | Initializes the plugin, commands, managers, and event listeners |
+| `CommendCommand.java` | Validates the command and opens the commendation menu |
+| `CommendMenuListener.java` | Handles GUI interactions and commendation selections |
+| `CommendManager.java` | Handles commendation rules and cooldown validation |
+| `DataManager.java` | Saves and retrieves commendation counts and cooldown data |
+| `CommendProfileCommand.java` | Retrieves and displays player commendation statistics |
 
-**CommendProfileCommand.java**  
-Handles `/commendprofile <player>` and displays commendation statistics.
+### Data Persistence
 
-**CommendMenuListener.java**  
-Handles player interactions with the commend menu.
+MineCommend stores player commendation data in `data.yml`.
 
-**CommendManager.java**  
-Handles commendation rules and the 24-hour cooldown.
+- Player UUIDs are used instead of player names for persistent identification.
+- Each commendation category is tracked separately.
+- Cooldown timestamps are stored for each sender-target pair.
+- Data remains available after the server restarts.
 
-**DataManager.java**  
-Stores commendation counts and cooldown data.
+## Project Structure
 
-Player UUIDs are used as persistent player identifiers.
+```text
+MineCommend/
+├── src/
+│   └── main/
+│       ├── java/
+│       │   └── com/kenta/minecommend/
+│       │       ├── MineCommend.java
+│       │       ├── CommendCommand.java
+│       │       ├── CommendProfileCommand.java
+│       │       ├── CommendMenuListener.java
+│       │       ├── CommendManager.java
+│       │       └── DataManager.java
+│       └── resources/
+│           └── plugin.yml
+├── README.md
+├── SPEC.md
+├── KNOWLEDGE.md
+├── SKILLS.md
+└── pom.xml
+```
 
-## Installation
+## Build from Source
 
-### Requirements
+For developers who want to build MineCommend themselves:
 
-- Java 21
-- Paper 1.21.4 server
-
-### Build
-
-Clone the repository and run:
+1. Install Java 21 and Maven.
+2. Clone or download this repository.
+3. Open a terminal in the project directory.
+4. Run:
 
 ```bash
 mvn package
 ```
 
-The compiled plugin JAR will be generated in:
+The compiled plugin will be generated in the `target/` directory.
 
-```text
-target/
-```
+Copy the generated `.jar` file into your Paper server's `plugins/` folder and restart the server.
 
-Copy the JAR file into your Paper server's:
-
-```text
-plugins/
-```
-
-Then start or restart the server.
-
-The plugin is now ready to use:
-
-```text
-/commend <player>
-```
+---
 
 ## Project Documentation
 
-This repository also contains development documentation:
+This repository includes additional documentation:
 
-- `SPEC.md` — plugin requirements and expected behavior
-- `KNOWLEDGE.md` — current architecture and implementation
-- `SKILLS.md` — development and code-change guidelines
+- **[SPEC.md](SPEC.md)** — Defines the plugin's functional requirements and expected behavior.
+- **[KNOWLEDGE.md](KNOWLEDGE.md)** — Documents the current architecture and implementation.
+- **[SKILLS.md](SKILLS.md)** — Defines the development workflow and code-change guidelines.
 
 ## Future Improvements
 
-- Improved GUI design
-- Better visual presentation for player profiles
-- Stronger GUI identification instead of relying on inventory titles
-- Additional customization options for server administrators
+Potential improvements for future versions:
 
-## Status
+- More polished GUI design and visual effects.
+- Improved presentation of player commendation profiles.
+- More robust GUI identification and event handling.
+- Additional customization options for server administrators.
 
-**MineCommend V1.0**
+## Project Status
 
-The core commendation system, GUI, cooldown system, persistent storage, and player profiles are implemented and working.
+**MineCommend v1.0.0 — First Release**
+
+The core commendation system has been implemented and tested, including:
+
+- Player commendations through an interactive GUI
+- 24-hour cooldown validation
+- Persistent data storage
+- Player commendation profiles
+- Offline profile lookup
+
+**[Download the latest version](https://github.com/KenSung1215/MineCommend/releases/latest)**
