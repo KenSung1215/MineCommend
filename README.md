@@ -98,18 +98,6 @@ You play Minecraft with Steve
 
 ---
 
-## Screenshots
-
-### Commend Menu
-
-*Screenshot coming soon.*
-
-### Player Commendation Profile
-
-*Screenshot coming soon.*
-
----
-
 ## Getting Started
 
 MineCommend is designed for Minecraft Java Edition servers running **Paper 1.21.4**.
